@@ -1,3 +1,5 @@
+import { OffreVoyageService } from './../controller/service/offre-voyage.service';
+import { OffreVoyage } from './../controller/model/Offre-voyage.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OffreVoyageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private offreService : OffreVoyageService) { }
 
   ngOnInit(): void {
+    this.getAlloffres();
   }
+
+  public  getAlloffres() {
+    console.log("heey");
+    this.offreService.getAlloffres();
+}
+
+public get offres(): Array<OffreVoyage>{
+
+  return this.offreService.offres;
+}
 
 }
