@@ -1,3 +1,4 @@
+import { Extra } from './Extra.model';
 import { Parcour } from './Parcours.model';
 import { TypeVoyage } from './TypeVoyage.model';
 import { Agence } from './Agence.model';
@@ -16,5 +17,8 @@ export class OffreVoyage {
   public typeVoyage :TypeVoyage;
   public commentaires = new Array<Commentaire>();
   public parcours = new Array<Parcour>();
+  public tarifBase :Number;
+  public extras: Array<Extra>;
+
 
 }

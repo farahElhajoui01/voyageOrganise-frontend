@@ -1,6 +1,6 @@
 import { Ville } from './Ville.model';
 export class Pays{
-    private  id:Number;
-	private  libelle:String;
-	private  villes:Array<Ville>;
+    public  id:Number;
+	public  libelle:String;
+	public  villes:Array<Ville>;
 }

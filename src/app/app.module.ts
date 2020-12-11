@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { OffreVoyageComponent } from './offre-voyage/offre-voyage.component';
 import {NgbModule,NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { OffreVoyageDetailsComponent } from './offre-voyage-details/offre-voyage-details.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { OffreVoyageDetailsComponent } from './offre-voyage-details/offre-voyage
     NgbModule,
     NgbPaginationModule,
     NgbAlertModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng5SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

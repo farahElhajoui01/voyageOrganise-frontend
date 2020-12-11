@@ -1,6 +1,6 @@
 import { OffreVoyage } from './Offre-voyage.model';
 export class TypeVoyage{
-    private  id:Number;
-    private  libelle:String;
-    private  offreVoyages:Array<OffreVoyage>;
+    public  id:Number;
+    public  libelle:String;
+    public  offreVoyages:Array<OffreVoyage>;
 }

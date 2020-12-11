@@ -1,5 +1,6 @@
+
 <div class="row bg-offres">
-        <div class=" filterside col-md-3 ">
+        <div class=" filterside col-md-2 ">
 
             <div class="sidebar-wrapper">
 
@@ -8,70 +9,77 @@
                     <li class="filter">
                         
                         <div class="choices_filter">
-                            <div class="col-md-12">   
-                                <div class="dropdown">
-                                    <span>Pays</span>
-                                    <div class="dropdown-content">
-                                      <p>Maroc</p>
-                                      <p>Espagne</p>
-                                    </div>
-                                  </div>
+                          <div class="col">
+                            <div ngbDropdown class="btn " style="padding:5px">
+                              <button class="btn  Toggle" id="dropdownBasic1" ngbDropdownToggle style="margin: 0px;background-color: #e95e38;width: 150px;">Pays</button>
+                              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <button ngbDropdownItem *ngFor="let p of this.pays " (click)="this.selectPays(p)">{{p.libelle}}</button>
+                               
                             </div>
+                          </div>
+                    </div>
             
                         </div>
                            
                     </li>
-                    <hr>
                     <li class="filter">
                         
-                        <div class="choices_filter">
-                            <div class="col-md-12">   
-                                <div class="dropdown">
-                                    <span>Ville</span>
-                                    <div class="dropdown-content">
-                                      <p>Marrakech</p>
-                                      <p>Rabat</p>
-                                    </div>
-                                  </div>
-                            </div>
-            
+                      <div class="col">
+                        <div ngbDropdown class="btn " style="padding:5px">
+                          <button class="btn  Toggle" id="dropdownBasic1" ngbDropdownToggle style="margin: 0px;background-color: #e95e38;width: 150px;">Ville</button>
+                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem *ngFor="let v of this.pays_filter.villes" (click)="this.selectVille(v)" >{{v.libelle}}</button>
+                           
                         </div>
+                      </div>
+                </div>
+                           
+                    </li>
+                    <li class="filter">
+                        
+                      <div class="col">
+                        <div ngbDropdown class="btn " style="padding:5px">
+                          <button class="btn  Toggle" id="dropdownBasic1" ngbDropdownToggle style="margin: 0px;background-color: #e95e38;width: 150px;">Type de Voyage</button>
+                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem *ngFor="let t of this.typeVoyages " (click)="this.selectType(t)" >{{t.libelle}}</button>
+                           
+                        </div>
+                      </div>
+                </div>
+                           
+                    </li>
+                    <li class="filter">
+                        
+                      <div class="col">
+                        <div ngbDropdown class="btn " style="padding:5px">
+                          <button class="btn  Toggle" id="dropdownBasic1" ngbDropdownToggle style="margin: 0px;background-color: #e95e38;width: 150px;">Agence</button>
+                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem *ngFor="let a of this.agences " (click)="this.selectAgence(a)">{{a.raisonSociale}}</button>
+                           
+                        </div>
+                      </div>
+                </div>
                            
                     </li>
                     <hr>
                     <li class="filter">
             
                         <div class="titres-filter">
-                            Prix
+                            Prix Maximum
                         </div>
-                         
-            
+                        <div class=" custom-slider" style="width: 170px;">
+
+                        <ng5-slider [(value)]="value" [options]="options" (valueChange)="this.filter(this.ville_filter,this.agence_filter,this.typeVoyage_filter,this.value)"></ng5-slider>
+                        </div>
                         <div class="choices_filter">
-                            <div class="slidecontainer">
-                                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                              </div>
+                           
+                          
                               </div>
                         </li>
                     <br/>
                         <hr>
             
-                        <li class="filter">
-            
-                            <div class="titres-filter">
-                                Notation
-                            </div>
-                              
-                            <div class="choices_filter">
-                               
-                                <i class="nc-icon nc-diamond stars" style="color: orange;font-size: 16;"></i>
-                                <i class="nc-icon nc-diamond stars" style="color: orange;font-size: 16;"></i>
-                                <i class="nc-icon nc-diamond stars" style="color: orange;font-size: 16;"></i>
-                                <i class="nc-icon nc-diamond stars" style="color: #7f8585;font-size: 16;"></i>
-                                <i class="nc-icon nc-diamond stars" style="color: #7f8585;font-size: 16;"></i>
-                                
-                               
-                                </div>
-                            </li>
+                      
                                 <br/>
                                 <hr>
                             <li class="filter">
@@ -96,36 +104,36 @@
                                         <span class="checkmark"></span>
                                         Activités pour enfants
                                       </label>
-                                      <a routerLink="table">table</a>
+                                     
                                  
                                     </div>
                                 </li>
                                 <br/>
 
-                                <li>
-                                    <a >table</a>
-                                </li>
+                               
             
                 </ul>
             </div>
             
         </div>
-        <div class=" col-md-9 ">
-            <div class="row">
+        <div class=" col-md-10 ">
+ <div class="row" >
 
-    <div class=" col-md-6 " >
+    <div class=" col-md-6 " *ngFor="let o of this.offres "   >
       <div class="card card-stats">
         <div class="card-body ">
           <div class="row">
-            
+
             <div class="col-md-8 ">
               <div class="numbers">
-            <p class="card-title">Titre de l'offre</p>
+            <p class="card-title"> {{ o.titre }}</p>
             </div>
             </div>
+
             <div class="col-md-4 " >
-              <div class="numbers">
-              <p class="card-category">Dakhla City</p>
+              
+              <div class="numbers" >
+              <p class="card-category" >{{ o.typeVoyage.libelle }}</p>
               </div>
               </div>
             </div>
@@ -136,41 +144,61 @@
             </div>
   
             </div>
-            <div class="row">
-           
+            <div class="row" style="padding: 15px;">
+               
+                
+                <div class="numbers"  >
+                  <p class="card-category" style="font-weight: bold;text-align: left;">- {{ o.agence.raisonSociale}}  &nbsp;</p>
+                 </div>
+                 <div class="choices_filter">
+                  <i class="fa fa-star " style="color: orange;font-size: 16;"></i>
+                  <i class="fa fa-star " style="color: orange;font-size: 16;"></i>
+                  <i class="fa fa-star " style="color: orange;font-size: 16;"></i>
+                  <i class="fa fa-star " style="color: #cccbcb;font-size: 16;"></i>
+                  <i class="fa fa-star " style="color: #cccbcb;font-size: 16;"></i>
+
+                  
+                 
+                  </div>
+                  <p> / </p>
+
+                  <div class="row extra-zone">
+                    <div class="numbers" *ngFor="let p of o.parcours" >
+                      <p class="card-category" style="color:#FF4C40;font-weight: bold;text-align: left;">{{ p.ville.libelle }}  &nbsp;</p>
+                     </div>
+
+                      </div>
+
+                     
               <div class="numbers">
-                <div class="description">3 Nuits / 4 Jours à Almoggar Garden Beach 4* en petit déjeuner avec vol A/R de Rabat
-                  Animation
-                  Pieds dans l'eau</div>
+                <div class="description">{{o.description}}</div>
                   <p>
               </div>
+              <div class="row extra-zone">
+                <div class="numbers" *ngFor="let e of o.extras" >
+                  <p class="card-category" style="font-weight: bold;text-align: left;">- {{ e.libelle }}  </p>
+                 </div>
+    
+                  </div>
             </div>
+          
+          
             <div class="row extra-zone">
-  
+   
               <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-album-2"></i>
+                  <i class="fa fa-hotel " style="color: #FF4C40;font-size: 20;"></i>
+
                 </a>
                
               </div>
               <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-istanbul"></i>
+                  <i class="fa fa-plane " style="color: #FF4C40;font-size: 20;"></i>
                 </a>
                
               </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-satisfied"></i>
-                </a>
-               
-              </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-sun-fog-29"></i>
-                </a>
-               
-              </div>
+            
   
   
               
@@ -179,11 +207,11 @@
            
         
         </div>
-        <div class="card-footer ">
+        <div class="card-footer " style="padding-right: 0;">
           <hr>
           <div class="row">
             <div class="col-md-6 card-price">
-            5200 MAD 
+              {{o.tarifBase}} MAD 
         </div>
         <div class="col-md-6 update ml-auto mr-auto">
           <a routerLink="table" class="btn btn-primary btn-round">J'EN PROFITE</a>
@@ -193,244 +221,7 @@
       </div>
       </div>
     </div>
-    <div class=" col-md-6 ">
-      <div class="card card-stats">
-        <div class="card-body ">
-          <div class="row">
-            
-            <div class="col-md-8 ">
-              <div class="numbers">
-            <p class="card-title">Titre de l'offre</p>
-            </div>
-            </div>
-            <div class="col-md-4 " >
-              <div class="numbers">
-              <p class="card-category">Dakhla City</p>
-              </div>
-              </div>
-            </div>
-          <div class="row">
-            <div class="col-md-12 bg-offre ">
   
-             <img  src="assets/img/bg-offre2.jpeg" />
-            </div>
-  
-            </div>
-            <div class="row">
-           
-              <div class="numbers">
-                <div class="description">3 Nuits / 4 Jours à Almoggar Garden Beach 4* en petit déjeuner avec vol A/R de Rabat
-                  Animation
-                  Pieds dans l'eau</div>
-                  <p>
-              </div>
-            </div>
-            <div class="row extra-zone">
-  
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-album-2"></i>
-                </a>
-               
-              </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-istanbul"></i>
-                </a>
-               
-              </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-satisfied"></i>
-                </a>
-               
-              </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-sun-fog-29"></i>
-                </a>
-               
-              </div>
-  
-  
-              
-  
-            </div>
-           
-        
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="row">
-            <div class="col-md-6 card-price">
-            5200 MAD 
-        </div>
-        <div class="col-md-6 update ml-auto mr-auto">
-          <button type="submit" class="btn btn-primary btn-round">J'en profite</button>
-        </div>
-        </div>
-      </div>
-      </div>
-    </div>
-    <div class=" col-md-6 ">
-      <div class="card card-stats">
-        <div class="card-body ">
-          <div class="row">
-            
-            <div class="col-md-8 ">
-              <div class="numbers">
-            <p class="card-title">Titre de l'offre</p>
-            </div>
-            </div>
-            <div class="col-md-4 " >
-              <div class="numbers">
-              <p class="card-category">Dakhla City</p>
-              </div>
-              </div>
-            </div>
-          <div class="row">
-            <div class="col-md-12 bg-offre ">
-  
-             <img  src="assets/img/bg-offre3.jpg" />
-            </div>
-  
-            </div>
-            <div class="row">
-           
-              <div class="numbers">
-                <div class="description">3 Nuits / 4 Jours à Almoggar Garden Beach 4* en petit déjeuner avec vol A/R de Rabat
-                  Animation
-                  Pieds dans l'eau</div>
-                  <p>
-              </div>
-            </div>
-            <div class="row extra-zone">
-  
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-album-2"></i>
-                </a>
-               
-              </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-istanbul"></i>
-                </a>
-               
-              </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-satisfied"></i>
-                </a>
-               
-              </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-sun-fog-29"></i>
-                </a>
-               
-              </div>
-  
-  
-              
-  
-            </div>
-           
-        
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="row">
-            <div class="col-md-6 card-price">
-            5200 MAD 
-        </div>
-        <div class="col-md-6 update ml-auto mr-auto">
-          <button type="submit" class="btn btn-primary btn-round">J'en profite</button>
-        </div>
-        </div>
-      </div>
-      </div>
-    </div>
-  
-    <div class=" col-md-6 ">
-      <div class="card card-stats">
-        <div class="card-body ">
-          <div class="row">
-            
-            <div class="col-md-8 ">
-              <div class="numbers">
-            <p class="card-title">Titre de l'offre</p>
-            </div>
-            </div>
-            <div class="col-md-4 " >
-              <div class="numbers">
-              <p class="card-category">Dakhla City</p>
-              </div>
-              </div>
-            </div>
-          <div class="row">
-            <div class="col-md-12 bg-offre ">
-  
-             <img  src="assets/img/bg-offre3.jpg" />
-            </div>
-  
-            </div>
-            <div class="row">
-           
-              <div class="numbers">
-                <div class="description">3 Nuits / 4 Jours à Almoggar Garden Beach 4* en petit déjeuner avec vol A/R de Rabat
-                  Animation
-                  Pieds dans l'eau</div>
-                  <p>
-              </div>
-            </div>
-            <div class="row extra-zone">
-  
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-album-2"></i>
-                </a>
-               
-              </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-istanbul"></i>
-                </a>
-               
-              </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-satisfied"></i>
-                </a>
-               
-              </div>
-              <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini" href="javascript:void(0)">
-                  <i class="nc-icon nc-sun-fog-29"></i>
-                </a>
-               
-              </div>
-  
-  
-              
-  
-            </div>
-           
-        
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="row">
-            <div class="col-md-6 card-price">
-            5200 MAD 
-        </div>
-        <div class="col-md-6 update ml-auto mr-auto">
-          <button type="submit" class="btn btn-primary btn-round">J'en profite</button>
-        </div>
-        </div>
-      </div>
-      </div>
-    </div>
 </div>
     </div>
     </div>
